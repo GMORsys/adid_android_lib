@@ -9,7 +9,11 @@ Add the undermentioned to build.gradle.
 ```gradle
 
 repositories {
-    maven { url 'https://github.com/GMORsys/adid_android_lib/tree/master/repository/' }
+    maven { url 'http://GMORsys.github.com/adid_android_lib/repository/' }
+}
+
+dependencies {
+    compile 'gmor.support:gmoradid:1.1.4'
 }
 
 ```
