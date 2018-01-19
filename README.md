@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    compile 'gmor.support:gmoradid:1.1.4'
+    implementation 'gmor.support:gmoradid:1.1.4'
 }
 
 ```
