@@ -1,4 +1,5 @@
 # adid_android_lib
+
 Get AdID of GMO Research lib for Android.
 
 
@@ -13,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'gmor.support:gmoradid:1.1.4'
+    implementation 'jp.gmo-research.adid:gmor-adid:1.3.1'
 }
 
 ```
