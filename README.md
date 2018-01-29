@@ -13,12 +13,48 @@ repositories {
 }
 
 dependencies {
-    implementation 'jp.gmo-research.adid:gmor-adid:1.3.1'
+    implementation 'jp.gmo-research.adid:gmor-adid:1.3.2'
 }
 
 ```
 
-サンプルプログラム
+## ライブライの仕様
+
+new DeviceRegistAsyncTask 呼び出し、thisを渡す。
+
+execute() には 7つのオブジェクトのパラメーターを渡す。
+
+### execute() に渡すパラメータ
+
+| No | 型      |                                    説明                                    | 必須 |
+|:--:|---------|:--------------------------------------------------------------------------|:----:|
+|  1 | String  | モニタID                                                                   |      |
+|  2 | String  | パネルタイプ                                                               |      |
+|  3 | String  | デバイストークン(現在は未使用)<br>空文字を送る                     |      |
+|  4 | String  | Android ID<br>(機種ごとにユニークになるID)               |○|
+|  5 | String  | 広告ID   プログラムを参照                                                  |      |
+|  6 | String  | アプリごとに固有のID<br>"3" 固定                                            |      |
+|  7 | Boolean | APIのを開発環境か本番環境か切り替える<br>TRUE : 本番環境<br>FALSE : ST環境   | ○ |
+
+### 例
+
+```java
+Object[] postParamsMobileDeviceApi = new Object[7];
+postParamsMobileDeviceApi[0] = monitorId;
+postParamsMobileDeviceApi[1] = panelType;
+postParamsMobileDeviceApi[2] = deviceToken;
+postParamsMobileDeviceApi[3] = androidId;
+postParamsMobileDeviceApi[4] = adId;
+postParamsMobileDeviceApi[5] = appId;
+postParamsMobileDeviceApi[6] = urlFlag;
+
+new DeviceRegistAsyncTask(this).execute(postParamsMobileDeviceApi);
+```
+
+
+
+## サンプルプログラム
+
 view 側でボタンをクリックすると通信するアプリを想定
 
 ```java
@@ -74,7 +110,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onClick(View v) {
-    	// 下記の7つのパラメーターを渡す
+        // 下記の7つのパラメーターを渡す
         String monitorId = "001"; // モニタID (String)
         String panelType = "002"; // パネルタイプ (String)
         String deviceToken = ""; // デバイストークン 空固定にしておく (String) 
@@ -101,3 +137,4 @@ public class MainActivity extends AppCompatActivity
     }
 }
 ```
+
