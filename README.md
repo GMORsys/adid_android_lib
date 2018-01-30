@@ -18,7 +18,7 @@ dependencies {
 
 ```
 
-## ライブライの仕様
+## ライブラリの仕様
 
 new DeviceRegistAsyncTask 呼び出し、thisを渡す。
 
@@ -28,12 +28,12 @@ execute() には 7つのオブジェクトのパラメーターを渡す。
 
 | No | 型      |                                    説明                                    | 必須 |
 |:--:|---------|:--------------------------------------------------------------------------|:----:|
-|  1 | String  | モニタID                                                                   |      |
-|  2 | String  | パネルタイプ                                                               |      |
+|  1 | String  | モニタID                                                                   | ○ |
+|  2 | String  | パネルタイプ                                                               | ○ |
 |  3 | String  | デバイストークン(現在は未使用)<br>空文字を送る                     |      |
 |  4 | String  | Android ID<br>(機種ごとにユニークになるID)               |○|
 |  5 | String  | 広告ID   プログラムを参照                                                  |      |
-|  6 | String  | アプリごとに固有のID<br>"3" 固定                                            |      |
+|  6 | String  | アプリごとに固有のID<br>個別に連絡します。                                           | ○ |
 |  7 | Boolean | APIのを開発環境か本番環境か切り替える<br>TRUE : 本番環境<br>FALSE : ST環境   | ○ |
 
 ### 例
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity
         // Android ID (String)
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.System.ANDROID_ID);
         String adId = this.advertisingId; // 広告ID (String)
-        String appId = "3"; // アプリ別のID。"3"固定。 (String)
+        String appId = "3"; // アプリ別のID。個別に連絡。 (String)
 
         // アクセスする先の切り替え ST環境か本番環境か (Boolean)
         // TRUE : 本番環境
